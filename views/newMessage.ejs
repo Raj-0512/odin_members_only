@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>New Message</title>
+    <link rel="stylesheet" href="/css/newMessage.css">
+</head>
+<body>
+<div class="container">
+    <div class="card">
+        <h2>Write a Letter</h2>
+
+        <form action="/newMessage" method="POST">
+
+            <div class="form-group">
+                <label>Title</label>
+                <input
+                        type="text"
+                        name="title"
+                        placeholder="Enter message title"
+                        required
+                >
+            </div>
+
+            <div class="form-group">
+                <label>Letter</label>
+                <textarea
+                        name="content"
+                        placeholder="Write your message here..."
+                        rows="5"
+                        required
+                ></textarea>
+            </div>
+
+            <button type="submit">Send Off</button>
+        </form>
+
+        <div class="links">
+            <a href="/index">Go to Dashboard</a>
+        </div>
+    </div>
+</div>
+</body>
+</html>

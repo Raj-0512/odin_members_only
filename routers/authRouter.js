@@ -1,6 +1,7 @@
 const express = require("express");
 const bcrypt = require("bcryptjs");
 const {pool} = require("../config/db");
+const passport = require("../config/passport");
 
 const authRouter = express.Router();
 
@@ -13,12 +14,33 @@ authRouter.get("/signup" , (req,res)=>{
     res.render("signup");
 });
 
-authRouter.post("/login" , (req,res)=>{
-    const {username,password} = req.body;
+authRouter.get("/index" , isAuth , async (req,res) =>{
+    try
+    {
+        const results = await pool.query(
+            `SELECT m.*, u.username
+             FROM messages m
+                      JOIN "user" u ON m.user_id = u.id`
+        );
+        const messages = results.rows;
+        res.render("index" , {messages , isMember:req.user.is_member});
+    }
+    catch(err)
+    {
+        console.error(err);
+        res.render("index" , {messages:[]})
+    }
 
 
-    res.redirect("/")
-})
+});
+
+authRouter.post("/login" ,
+    passport.authenticate("local" ,
+        {
+            successRedirect:"/index",
+            failureRedirect:"/"
+        })
+);
 
 authRouter.post("/signup" , async (req,res)=>{
     const {username,firstName,lastName,password,confirmPassword} = req.body;
@@ -41,4 +63,13 @@ async function createUser(firstName , lastName , username , hashedPassword)
          values($1,$2,$3,$4)`,[firstName,lastName,username,hashedPassword]
     );
 }
-module.exports = authRouter;
+
+function isAuth(req , res , next)
+{
+    if(req.isAuthenticated())
+    {
+        return next();
+    }
+    res.redirect("/");
+}
+module.exports = {authRouter , isAuth};

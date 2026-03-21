@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Clubhouse</title>
+    <link rel="stylesheet" href="/css/index.css">
+</head>
+<body>
+
+<nav class="navbar">
+    <div class="logo">Clubhouse</div>
+
+    <div class="nav-links">
+        <a href="/newMessage">Write a letter</a>
+        <a href="#">My Letters</a>
+        <a href="#">Become a member</a>
+    </div>
+</nav>
+
+<div class="container">
+
+    <% messages.forEach(message => { %>
+        <div class="card">
+
+            <div class="card-header">
+                <h2><%= message.title %></h2>
+            </div>
+
+            <div class="card-body">
+                <p><%= message.content %></p>
+
+                <p class="meta">
+                    From:
+                    <%= isMember ? message.username : "Anonymous" %>
+                </p>
+
+                <p class="meta">
+                    Sent:
+                    <%= isMember ? message.created_at : "Anonymous" %>
+                </p>
+            </div>
+
+        </div>
+    <% }) %>
+
+</div>
+
+</body>
+</html>
