@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Letters</title>
+    <link rel="stylesheet" href="/css/my_letter.css">
+</head>
+<body>
+
+<nav class="navbar">
+    <div class="logo">Clubhouse</div>
+
+    <div class="nav-links">
+        <a href="/newMessage">Write a letter</a>
+        <a href="/index">Dashboard</a>
+        <a href="/join">Become a member</a>
+    </div>
+</nav>
+
+<div class="stats">
+    <div class="stat-box">
+        <p><%= user.username %>'s Letters</p>
+        <h3><%= messages.length %></h3>
+    </div>
+</div>
+
+<div class="container">
+
+    <% if (messages.length > 0) { %>
+
+        <% messages.forEach(message => { %>
+            <div class="card">
+
+                <div class="card-header">
+                    <h2><%= message.title %></h2>
+                </div>
+
+                <div class="card-body">
+                    <p><%= message.content %></p>
+
+                    <p class="meta">
+                        From: <%= user.username %>
+                    </p>
+
+                    <p class="meta">
+                        Sent: <%= message.created_at %>
+                    </p>
+
+                    <div class="actions">
+                            <button class="delete">Delete</button>
+                        <button class="edit">Edit</button>
+                    </div>
+                </div>
+
+            </div>
+        <% }) %>
+
+    <% } else { %>
+
+        <div class="empty-state">
+            <div class="profile"></div>
+            <p><%= user.username %> has written 0 letters.</p>
+        </div>
+
+    <% } %>
+
+</div>
+
+</body>
+</html>

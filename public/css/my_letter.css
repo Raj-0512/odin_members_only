@@ -1,0 +1,152 @@
+body
+{
+    margin: 0;
+    font-family: "Segoe UI", sans-serif;
+    background: #0f172a;
+    color: #e2e8f0;
+}
+
+.navbar
+{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+    background: #020617;
+}
+
+.logo
+{
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.nav-links a
+{
+    margin: 0 15px;
+    text-decoration: none;
+    color: #cbd5f5;
+}
+
+.stats
+{
+    display: flex;
+    justify-content: center;
+    margin: 30px 0;
+}
+
+.stat-box
+{
+    background: #1e293b;
+    padding: 15px 25px;
+    border-radius: 12px;
+    text-align: center;
+}
+
+.stat-box p
+{
+    color: #94a3b8;
+    margin: 0;
+}
+
+.stat-box h3
+{
+    color: #818cf8;
+    margin-top: 5px;
+}
+
+.container
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+}
+
+.card
+{
+    width: 600px;
+    background: #1e293b;
+    border-radius: 16px;
+    padding: 25px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+}
+
+.card-header
+{
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.card-header h2
+{
+    color: #818cf8;
+    font-weight: 500;
+    border-bottom: 1px solid #334155;
+    padding-bottom: 10px;
+}
+
+.card-body p
+{
+    margin: 10px 0;
+}
+
+.meta
+{
+    margin-top: 10px;
+    color: #94a3b8;
+    font-size: 14px;
+}
+
+.actions
+{
+    margin-top: 15px;
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+}
+
+button
+{
+    padding: 8px 14px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.delete
+{
+    background: #ef4444;
+    color: white;
+}
+
+.edit
+{
+    background: #6366f1;
+    color: white;
+}
+
+.empty-state
+{
+    margin-top: 50px;
+    text-align: center;
+    background: #1e293b;
+    padding: 40px;
+    border-radius: 16px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+}
+
+.empty-state .profile
+{
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: #334155;
+    margin: 0 auto 15px auto;
+}
+
+.empty-state p
+{
+    color: #cbd5f5;
+}

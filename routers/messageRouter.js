@@ -26,5 +26,21 @@ messageRouter.post("/newMessage" , isAuth , async (req,res) =>{
     }
 });
 
+messageRouter.get("/my_letter" , async (req , res) => {
+    try
+    {
+        const result = await pool.query(
+                `Select * from messages where user_id = $1` , [req.user.id]
+        )
+
+        const messages = result.rows;
+        res.render("my_letter" , {messages , user:req.user});
+    }
+    catch(err)
+    {
+        console.error(err);
+    }
+})
+
 
 module.exports = messageRouter;
